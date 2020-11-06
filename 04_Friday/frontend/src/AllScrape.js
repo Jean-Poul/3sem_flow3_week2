@@ -1,32 +1,101 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 
 const AllScrape = () => {
-  const [joke, setJoke] = useState("");
-
-  const FetchAllJokes = () => {
+  const [sequental, setSequental] = useState("");
+  const fetchAllSequental = () => {
     fetch("http://localhost:8080/jokeFetcher/api/jokes/sequental")
       .then((res) => res.json())
-      .then((data) => {
-        setJoke(data);
+      .then((data1) => {
+        setSequental(data1);
       });
   };
 
+  const [parallel, setParallel] = useState("");
+  const fetchAllParallel = () => {
+    fetch("http://localhost:8080/jokeFetcher/api/jokes/parallel")
+      .then((res) => res.json())
+      .then((data2) => {
+        setParallel(data2);
+      });
+  };
+
+  //loads joke first time
   useEffect(() => {
-    FetchAllJokes();
+    fetchAllSequental();
+    fetchAllParallel();
   }, []);
 
   return (
     <div>
-      <p>Chuck joke: {joke.url}</p>
-      <p>reference: {joke.joke1}</p>
-      <br />
-      <hr />
-      <br />
-      <br />
-      <hr />
-      <br />
-      <button onClick={() => FetchAllJokes()}>Fetch new jokes</button>
+      <div className="floatLeft">
+        <h4>{sequental.title}</h4>
+        <p>{sequental.timeSpent}</p>
+
+        <table>
+          {sequental.tags &&
+            sequental.tags.map((element) => (
+              <tbody key={element.url}>
+                <tr>
+                  <th>url:</th>
+                  <td>{element.url}</td>
+                </tr>
+                <tr>
+                  <th>divCount:</th>
+                  <td>{element.divCount}</td>
+                </tr>
+                <tr>
+                  <th>bodyCount:</th>
+                  <td>{element.bodyCount}</td>
+                </tr>
+                <tr>
+                  <th>&nbsp;</th>
+                  <td>&nbsp;</td>
+                </tr>
+              </tbody>
+            ))}
+        </table>
+        <p>
+          <button
+            onClick={() => {
+              fetchAllSequental();
+              fetchAllParallel();
+            }}
+          >
+            fetch Scrape
+          </button>
+        </p>
+      </div>
+      <div className="floatLeft">
+        <h4>{parallel.title}</h4>
+        <p>{parallel.timeSpent}</p>
+        <table>
+          {parallel.tags &&
+            parallel.tags.map((element) => (
+              <tbody key={element.url}>
+                <tr>
+                  <th>url:</th>
+                  <td>{element.url}</td>
+                </tr>
+                <tr>
+                  <th>divCount:</th>
+                  <td>{element.divCount}</td>
+                </tr>
+                <tr>
+                  <th>bodyCount:</th>
+                  <td>{element.bodyCount}</td>
+                </tr>
+                <tr>
+                  <th>&nbsp;</th>
+                  <td>&nbsp;</td>
+                </tr>
+              </tbody>
+            ))}
+        </table>
+      </div>
+      {console.log({ sequental })}
+      {console.log({ parallel })}
     </div>
   );
 };
+
 export default AllScrape;
