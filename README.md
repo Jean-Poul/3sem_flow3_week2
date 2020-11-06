@@ -49,11 +49,13 @@ use bcrypt to hash our code. Hackers can still make use of a rainbow table, when
 However Bcrypt is very slow so hackers can't really make use of it. 
 
 To be able to use bcrypt in netbeans one has to import the following dependency:
- ```<dependency>
+ ```
+ <dependency>
     <groupId>org.mindrot</groupId>
     <artifactId>jbcrypt</artifactId>
     <version>0.4</version>
- </dependency>```
+ </dependency>
+ ```
 
 Ex: See https://github.com/Jean-Poul/3sem_flow3_week2/blob/main/02_Wednesday/dat3-startcode/src/main/java/entities/User.java in the file User.java. 
 On line 60 we have a constructor that hashes the password with salt. 
