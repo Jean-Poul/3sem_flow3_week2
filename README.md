@@ -83,7 +83,7 @@ In our backend, the token is set to expire in 30 min.
 
 See file LogIndEndpoint.java from the following link:
 
-https://github.com/Jean-Poul/3sem_flow3_week2/blob/main/02_Wednesday/dat3-startcode/src/main/java/security/LoginEndpoint.java
+https://github.com/Jean-Poul/3sem_flow3_week2/blob/main/02_Wednesday/dat3-startcode/src/main/java/security/LoginEndpoint.java in line 33.
 
 Also see the file called JWTAuthenticationFilter.java from the following link:
 
