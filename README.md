@@ -34,42 +34,56 @@ https://github.com/Jean-Poul/3sem_flow3_week2/tree/main/04_Friday <br/>
 
 
 ### ANSWERS
-1. Kunne bruge react komponenter og kommunikation mellem Komponenter:
 
-Vi startede med at gøre brug af komponenter tirsdag hvor vi gør brug af export/import for at kunne arbejde med diverse komponenter i vores projekt. Alt i react foregår via komponenter hvor man bygger et komponent op med sit eget hovedformål. Derved undgår man redundant kode og kan genbruge komponenter, som kan genbruges flere steder i sin applikation. Der er klasse og funktions komponenter. Det kan bruges ved bla. at sende props med som en slags variable og returnere et react element som bliver renderet og vist på klientsiden.
-Eks: https://github.com/Jean-Poul/3sem_flow3_week1/blob/main/01_Tuesday/day1_exercise/src/App.js
-Se App.js hvor vi øverst importer vores komponenter og gør f.eks. brug af dem i linje 25-27
+1. Forklare om behovet for Client-side routing i en SPA samt vise eksempler på brug af react router og subroutes. *
+React renders the appropriate information on the DOM using its component structure. Client-side routing in React helps to maintain 
+the seamless user experience that a typical single-page application promises. This is achieved through an external React library called React Router.
+Ex: see https://github.com/Jean-Poul/3sem_flow3_week2/blob/main/01_Tuesday/day1_exercise1/src/App.js in the file App.js. In line 23-45 I use the component Router 
+to be able to keep track of our url and for subrouting see line 68-85.
 
-2. Kunne bruge JSX samt forklare hvilket problem JSX løser for os.
+2. Kunne forklare rationalet bag hvorfor passwords ikke må gemmes i plain-text (selv på en sikker database) og vise en konkret løsning på problemet. *
+It is not recommended to save passwords in plain text since hackers can listen in on the data transfered and therefor sniff out password for users. Instead one could
+use bcrypt to hash our code. Hackers can still make use of a rainbow tables where they are building up databases with the hash of each "normal" used password.
+However bcrypt is very slow so hackers can really make use of it in the long term. To be able to use bcrypt in netbeans one has to import the following dependency:
+ <dependency>
+    <groupId>org.mindrot</groupId>
+    <artifactId>jbcrypt</artifactId>
+    <version>0.4</version>
+ </dependency>
 
-JSX er en JavaScript extension, der gør det muligt for os at kunne skrive HTML elementer i vores JavaScript uden brug af en masse DOM objekter (eks. document.getElementById()). 
-Eks: på dette ses igen i samme link: https://github.com/Jean-Poul/3sem_flow3_week1/blob/main/01_Tuesday/day1_exercise/src/App.js
-Se funktionen App() fra linje 20-41
+Ex: See https://github.com/Jean-Poul/3sem_flow3_week2/blob/main/02_Wednesday/dat3-startcode/src/main/java/entities/User.java in the file User.java. On line 60 we have a constructor 
+that hashes the password with salt. Salt is an additional word that is added to the password to make is harder to hack. I verify the password on line 55 in the same file.
 
-3. Kunne forklare og demonstrere brug af props i React
-Props står for properties og er stateless. Dvs. det bruges som read-only og ikke til at ændre en value, hvor state bruges i stedet. Props bruges til at sende data fra en component til en anden. Props sendes altid fra parrent til child. For at kunne gå fra child til parrent skal man bruge "lifting state up".
-Eks:
-https://github.com/Jean-Poul/3sem_flow3_week1/blob/main/01_Tuesday/day1_exercise/src/file3.js
-Se i file3.js i linje 23-25, som sender en prop videre til funktionen Welcome i linje 7
 
-4. Kunne forklare og demonstrere brug af state i React med Hooks via useState
-En hook er en speciel funktion, som lader os gøre brug af react features. Et eksempel på dette kunne være metoden useState. Ved at gøre brug af useState kan man tilføje en state til en komponent. Eks: https://github.com/Jean-Poul/3sem_flow3_week1/blob/main/02_Wednesday/day2_ex/src/App.js
-I linje 9 i App.js kan man se [count, setCount] = setState(props.count). Count er en getter og setCount er en setter, hvis man sammenligner det med java verden. setState kan sammenlignes med en constructor. I linje 20 og 23 gør jeg brug af count og setCount. I linje 9 gøres brug af setState.
+3. Kunne implementere og forklare en JAX-RS, JWT-baseret sikkerhedsløsning, baseret på et udleveret startprojekt. *
+I use a JWT based security implementation in the following link: https://github.com/Jean-Poul/3sem_flow3_week2/blob/main/02_Wednesday/frontend/src/apiFacade.js. 
+See the file apiFacade.js. In line 13 I save a JWT in the localStorage which is saved on the client side browser. To be able to get it one has to call the function in line 16. 
+When one is logged in and user/password has been authorized a token is set to the user. See this in action in line 31. In line 48 I add x-access-token to our header to be 
+able to get the token of the logged in user. To be able to see the stored token one can also look under "Dev tools -> application -> local storage" to see the key and value of the token. 
+In my backend the token is set to expire in 30 min. See file LogIndEndpoint.java from the following link: https://github.com/Jean-Poul/3sem_flow3_week2/blob/main/02_Wednesday/dat3-startcode/src/main/java/security/LoginEndpoint.java 
+Also see the file called JWTAuthenticationFilter.java from the following link: https://github.com/Jean-Poul/3sem_flow3_week2/blob/main/02_Wednesday/dat3-startcode/src/main/java/security/JWTAuthenticationFilter.java 
+In line 38 I have a filter method where I see if a user has gotten a valid token. This was set in the request header from the frontend which i described above.
+As a final note one cannot manually expire a token after it has been created. Thus, you cannot log out with JWT on the server-side as you do with sessions.
+JWT is stateless, meaning that you should store everything you need in the payload and skip performing a DB query on every request.
 
-5. Kunne bruge useEffect og forklare forskellig anvendelse af dette.
-Ved at bruge useEffect, fortæller man react at der skal gøres noget bestemt efter render(ens DOM er loaded færdig). Dvs. man gør brug af useEffect efter en update af ens DOM. Man kan have flere useEffect metoder i samme fil.
-React vil huske den funktion man passer og kan derved gøre brug af den efter ens DOM er blevet opdateret.
-Eks:
-https://github.com/Jean-Poul/3sem_flow3_week1/blob/main/03_Thursday/react-crud-rest-exercise/src/components/App.js
-I filen App.js linje 11 gøres brug af useEffect og her bruges denne hook til at  indsætte data til vores tabel, efter vores DOM er loaded.
 
-6. Kunne bruge list og keys i react, samt bruge controlled komponents til formdata.
-Ved at gøre brug af keys kan man entydigt identificere rækker i en liste. Herved opstår der ikke konflikter, når man skal finde hver enkelte række. Controlled components er når ens form data bliver afviklet af et React komponent.
-Eks: https://github.com/Jean-Poul/3sem_flow3_week1/blob/main/02_Wednesday/day2_ex/src/ListDemo.jsx
-Her vælger jeg at henvise til hele ListDemo.jsx filen, da der her gøres brug af to komponenter. MemberTable, som indeholder MemberDemo, og dette returneres til hvor det kaldes fra. På linje 26 indsættes en key til hver table row (<tr>).
+4. Kunne implementere og forklare en React baseret frontend der benytter et secure JAX-RS API *
+See the answers in question 3 since i've answered frontend and backend there.
 
-7. Kunne forklare og demonstrere begrebet "Lifting State" i React
-Lifting state vil sige at man løfter data fra en child til en parrent komponent. Hvis man vil have videre ført data fra en child komponent til et andet child komponent skal ens data først forbi parrent komponent. Dvs. man ikke kan gå fra child til child komponent. 
-Eks: https://github.com/Jean-Poul/3sem_flow3_week1/blob/main/03_Thursday/day3_exercise/src/LiftingUp.js
-Se i LiftingUp.js. Her har vi en parrent komponent (StartDemo) i linje 20 og to child komponenter, InputComp i linje 34 og ShowComp i linje 40. 
-InputComp sætter state på en value, som gemmes i parrent komponent, hvorefter ShowComp kan se den nye og opdateret state. State bliver ændret i parrent komponent, hvorefter child komponenterne gør brug af props, da de kun skal gøre brug af read-only.
+
+5. Kunne forklare og implementere parallellisering af en række "langsomme" opgaver udført i et JAX-RS endpoint *
+Parallel is faster than sequential since one can do many external calls at the same time while if one uses the sequential method the external calls will be done one after another.
+Meaning one task cannot start before the one called before has finised.
+In our backend project. We have used parallel requesting in the following link: https://github.com/Jean-Poul/3sem_flow3_week2/blob/main/03_Thursday/webscraber-momondo-demo/src/main/java/webscraper/Tester.java
+See file Tester.java. In line 33 we have a sequential method where as we have a parallel method in line 45. 
+To see our endpoints see the following link: https://github.com/Jean-Poul/3sem_flow3_week2/blob/main/03_Thursday/webscraber-momondo-demo/src/main/java/rest/WebScraperResource.java
+Go to the file WebScraperResource.java and see sequential in line 29 and parallel in line 38.
+
+
+6. Kunne forklare og implementere JAX-RS endpoints, hvis svar helt eller delvist må hentes fra eksterne servere *
+Lets start with our frontend. See the following link https://github.com/Jean-Poul/3sem_flow3_week2/blob/main/04_Friday/frontend/src/AllJokes.js. See the file AllJokes.js where we make an "external" call to our local host
+http://localhost:8080/jokeFetcher/api/jokes/ in line 7. After this you will have to look in our backend project from the following link https://github.com/Jean-Poul/3sem_flow3_week2/blob/main/04_Friday/jokeFetcher-momondo-demo-friday/src/main/java/rest/JokeResource.java
+First start by looking in the file called JokeRessoure.java where, as described in question 5, we have the endpoints sequential in line 52 and parallel in line 61. These
+endpoints call the runSequental() in line 33 and runParrallel() in line 45 in the Tester.java class from the following link: https://github.com/Jean-Poul/3sem_flow3_week2/blob/main/04_Friday/jokeFetcher-momondo-demo-friday/src/main/java/webscraper/Tester.java
+runSequental() and runParrallel() both have the external urls we are requesting data from.
+
