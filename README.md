@@ -9,7 +9,7 @@
 -------------------------------------------------------------------------------------------------
 
 ##### NOTE: 
-- Also added postman file in the wednesday folder
+- Added postman file in the folder for wednesday
 - Look at the bottom of the page to see written answers from this weeks questions.
 
 ###### Tuesday: 
