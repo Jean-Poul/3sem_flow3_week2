@@ -9,7 +9,7 @@
 -------------------------------------------------------------------------------------------------
 
 ##### NOTE: 
-- Also added postman file in the wednesday folder
+- Added postman file in the folder for wednesday
 - Look at the bottom of the page to see written answers from this weeks questions.
 
 ###### Tuesday: 
@@ -78,12 +78,12 @@ See the file apiFacade.js. In line 13 We save a JWT localStorage which is saved 
 To be able to get it, we have to call the function in line 16. When we are logged in, and user/password has been authorized, a token is set to the user.
 See this in action in line 31. In line 48 we add x-access-token to our header to be able to get the token of the logged in user.
 
-To be able to see the stored token we can also look under "Dev tools -> application -> local storage" to see the key and value of the token.
+To be able to see the stored token we can also look under "Dev tools -> application -> local storage" to see the key and value of the token. <br>
 In our backend, the token is set to expire in 30 min.
 
 See file LogIndEndpoint.java from the following link:
 
-https://github.com/Jean-Poul/3sem_flow3_week2/blob/main/02_Wednesday/dat3-startcode/src/main/java/security/LoginEndpoint.java
+https://github.com/Jean-Poul/3sem_flow3_week2/blob/main/02_Wednesday/dat3-startcode/src/main/java/security/LoginEndpoint.java in line 33.
 
 Also see the file called JWTAuthenticationFilter.java from the following link:
 
