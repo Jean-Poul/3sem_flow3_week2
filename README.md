@@ -45,11 +45,13 @@ to be able to keep track of our url and for subrouting see line 68-85.
 It is not recommended to save passwords in plain text since hackers can listen in on the data transfered and therefor sniff out password for users. Instead one could
 use bcrypt to hash our code. Hackers can still make use of a rainbow tables where they are building up databases with the hash of each "normal" used password.
 However bcrypt is very slow so hackers can really make use of it in the long term. To be able to use bcrypt in netbeans one has to import the following dependency:
- <dependency>
+ ```
+<dependency>
     <groupId>org.mindrot</groupId>
     <artifactId>jbcrypt</artifactId>
     <version>0.4</version>
  </dependency>
+```
 
 Ex: See https://github.com/Jean-Poul/3sem_flow3_week2/blob/main/02_Wednesday/dat3-startcode/src/main/java/entities/User.java in the file User.java. On line 60 we have a constructor 
 that hashes the password with salt. Salt is an additional word that is added to the password to make is harder to hack. I verify the password on line 55 in the same file.
