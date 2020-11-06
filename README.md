@@ -66,7 +66,7 @@ Ex: See https://github.com/Jean-Poul/3sem_flow3_week2/blob/main/02_Wednesday/dat
 in the file User.java. On line 60 we have a constructor that hashes the password with salt. Salt is a generated word that is added to the password to make the password longer before encryption, and therefore harder to hack.
 We verify the password on line 55 in the same file.
 
-<br><br> 3. <b>Kunne implementere og forklare en JAX-RS, JWT-baseret sikkerhedsløsning, baseret på et udleveret startprojekt. </b>
+<br>3. <b>Kunne implementere og forklare en JAX-RS, JWT-baseret sikkerhedsløsning, baseret på et udleveret startprojekt. </b>
 
 We use a JWT based security implementation in the following link:
 
@@ -96,7 +96,7 @@ JWT is stateless, meaning that you should store everything you need in the paylo
 4. <b>Kunne implementere og forklare en React baseret frontend der benytter et secure JAX-RS API </b>
 
 See the answers in question 3 since we answered frontend and backend there.
-<br><br><br> 5. <b>Kunne forklare og implementere parallellisering af en række "langsomme" opgaver udført i et JAX-RS endpoint </b>
+<br> 5. <b>Kunne forklare og implementere parallellisering af en række "langsomme" opgaver udført i et JAX-RS endpoint </b>
 
 Parallel is faster than sequential since it can do many external calls at the same time, while if we use the sequential method, the external calls will be done one after another, in sequence.
 
@@ -109,7 +109,7 @@ To see our endpoints, check the following link: https://github.com/Jean-Poul/3se
 
 Go to the file WebScraperResource.java to see an example of sequential in line 29 and parallel in line 38.
 
-<br><br> 6. <b>Kunne forklare og implementere JAX-RS endpoints, hvis svar helt eller delvist må hentes fra eksterne servere</b>
+<br> 6. <b>Kunne forklare og implementere JAX-RS endpoints, hvis svar helt eller delvist må hentes fra eksterne servere</b>
 
 Lets start with our frontend.
 
