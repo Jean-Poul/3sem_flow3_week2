@@ -1,3 +1,40 @@
+# 3 semester, flow 3, week 2
+
+-------------------------------------------------------------------------------------------------
+### Overview
+  - flow3 week2 tuesday exercise
+  - flow3 week2 wednesday exercise
+  - flow3 week2 thursday exercise
+  - flow3 week2 friday exercise
+-------------------------------------------------------------------------------------------------
+
+##### NOTE: 
+- Look at the bottom of the page to see written answers from this weeks questions.
+
+###### Tuesday: 
+- Client Side Routing with React Router V5 <br/>
+https://github.com/Jean-Poul/3sem_flow3_week2/tree/main/01_Tuesday<br/>
+- 
+
+###### Wednesday: 
+- Securing Restful Web Services <br/>
+https://github.com/Jean-Poul/3sem_flow3_week2/tree/main/02_Wednesday <br/>
+-
+
+###### Thursday: 
+- External requests from our endpoints and how to parallelize long lasting tasks <br/>
+https://github.com/Jean-Poul/3sem_flow3_week2/tree/main/03_Thursday <br/>
+- 
+
+###### Friday: 
+- Complete all exercises <br/>
+https://github.com/Jean-Poul/3sem_flow3_week2/tree/main/04_Friday <br/>
+- 
+
+
+
+### ANSWERS
+
 <br>1. <b>Forklare om behovet for Client-side routing i en SPA samt vise eksempler på brug af react router og subroutes. </b>
 
 React renders the appropriate information on the DOM using its component structure. Client-side routing in React helps to maintain
